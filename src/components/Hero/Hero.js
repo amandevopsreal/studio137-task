@@ -5,7 +5,11 @@ const Hero = () => {
     <main className='main'>
       <div className='container start'>
         <div className='video'>
-
+          <video>
+            <source src="https://40parables-assets.s3.amazonaws.com/bleat-AI-PulseCheck-Intro.mp4" type="video/mp4" />
+          </video>
+          <img alt="video thumbnail" class="thumbnail" src="https://assessment.churchtechtoday.com/static/media/video-thumbnail.e39d4546ab24c71915fc.png" style={{ opacity: "1" }}></img>
+          <img alt="play button" class="playbtn" src="https://i.ibb.co/MsKtgjJ/download.png"></img>
         </div>
         <div className='intro'>
           <h1 style={{ marginBottom: "0px" }}><span style={{ color: "rgb(110, 12, 249)" }}>Is your church embracing impact</span> or AI* hesitant?</h1>

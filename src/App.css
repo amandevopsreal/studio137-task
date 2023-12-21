@@ -511,4 +511,102 @@ footer {
   }
 }
 
+main .start,
+main .start .video {
+  display: flex;
+  justify-content: center;
+}
+
+main .start .video {
+  background-color: #333;
+  border-radius: 8px 0 0 8px;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+  position: relative;
+  transition: all .25s;
+  width: 50%;
+}
+
+@media only screen and (max-width: 830px) {
+  main .start .video {
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  main .start .video {
+    border-radius: 10px;
+    height: 50vh;
+    width: 100%;
+  }
+}
+
+main .start .video video {
+  margin: 0 auto;
+  position: relative;
+}
+
+@media only screen and (max-width: 830px) {
+  main .start .video video {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  main .start .video video {
+    width: auto;
+  }
+}
+
+main .start .video .thumbnail {
+  background-color: #e5e5e5;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: auto;
+}
+
+@media only screen and (max-width: 830px) {
+  main .start .video .thumbnail {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+main .start .video .playbtn {
+  border-radius: 25px;
+  cursor: pointer;
+  height: 45px;
+  width: 223px;
+}
+
+main .start .video .custom-controls,
+main .start .video .playbtn {
+  left: 50%;
+  position: absolute;
+  top: 83%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 830px) {
+  main .start .video .playbtn {
+    top: 75%;
+    top: 82%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  main .start .video .playbtn {
+    height: auto;
+    top: 85%;
+    width: 210px;
+  }
+}
+
 /*# sourceMappingURL=App.css.map */
