@@ -609,4 +609,19 @@ main .start .video .playbtn {
   }
 }
 
+@media only screen and (max-width: 830px) {
+  body header .header-wrapper .logo-right {
+    max-width: 34px;
+    min-width: 32px;
+    width: 34px;
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  body header .header-wrapper .logo-left img {
+    content: url(https://i.ibb.co/YbYt5Tk/download-1.png) !important;
+  }
+}
+
 /*# sourceMappingURL=App.css.map */
