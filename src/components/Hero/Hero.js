@@ -11,6 +11,7 @@ const Hero = () => {
           <img alt="video thumbnail" class="thumbnail" src="https://assessment.churchtechtoday.com/static/media/video-thumbnail.e39d4546ab24c71915fc.png" style={{ opacity: "1" }}></img>
           <img alt="play button" class="playbtn" src="https://i.ibb.co/MsKtgjJ/download.png"></img>
         </div>
+        <div style={{ backgroundColor: "rgb(51, 51, 51)", height: "10px" }}></div>
         <div className='intro'>
           <h1 style={{ marginBottom: "0px" }}><span style={{ color: "rgb(110, 12, 249)" }}>Is your church embracing impact</span> or AI* hesitant?</h1>
           <ol type="1" class="intro-points-list" style={{ margin: "25px auto 25px 0px" }}>

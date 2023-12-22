@@ -175,6 +175,26 @@ body .desktop {
   display: block;
 }
 
+
+
+main .start,
+main .start .video {
+  display: flex;
+  justify-content: center;
+}
+
+main .start {
+  background: #fff;
+  height: 578px;
+}
+
+main .container {
+  border-radius: 10px;
+  margin: 30px auto;
+  max-width: 1110px;
+  z-index: 1;
+}
+
 main .container.start {
   width: 95%;
 }
@@ -204,24 +224,6 @@ main .container.start {
   main .start {
     margin-top: 15px;
   }
-}
-
-main .start,
-main .start .video {
-  display: flex;
-  justify-content: center;
-}
-
-main .start {
-  background: #fff;
-  height: 578px;
-}
-
-main .container {
-  border-radius: 10px;
-  margin: 30px auto;
-  max-width: 1110px;
-  z-index: 1;
 }
 
 main .start .intro {
@@ -621,6 +623,41 @@ main .start .video .playbtn {
 @media only screen and (max-width: 830px) {
   body header .header-wrapper .logo-left img {
     content: url(https://i.ibb.co/YbYt5Tk/download-1.png) !important;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+
+  footer .bleat-logo,
+  footer .bleat-logo-mobile {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  footer .bleat-logo-mobile {
+    min-height: 70px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  footer .bleat-logo-mobile img {
+    height: 42px;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 831px) {
+  footer .bleat-logo-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 831px) {
+  main .container.start {
+    margin: 30px auto;
   }
 }
 
