@@ -1,15 +1,32 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 const Hero = () => {
+  const videoRef = useRef()
+  const thumbnailRef = useRef()
+  const buttonRef=useRef()
+  let flag = false;
+  const handleClick = () => {
+    if (flag) {
+      videoRef.current.pause()
+      flag = false;
+    }
+    else {
+      thumbnailRef.current.style.display = "none"
+      buttonRef.current.style.display="none"
+      videoRef.current.play()
+      flag = true
+    }
+
+  }
   return (
     <main className='main'>
       <div className='container start'>
         <div className='video'>
-          <video>
+          <video ref={videoRef} controls>
             <source src="https://40parables-assets.s3.amazonaws.com/bleat-AI-PulseCheck-Intro.mp4" type="video/mp4" />
           </video>
-          <img alt="video thumbnail" class="thumbnail" src="https://assessment.churchtechtoday.com/static/media/video-thumbnail.e39d4546ab24c71915fc.png" style={{ opacity: "1" }}></img>
-          <img alt="play button" class="playbtn" src="https://i.ibb.co/MsKtgjJ/download.png"></img>
+          <img ref={thumbnailRef} alt="video thumbnail" class="thumbnail" src="https://assessment.churchtechtoday.com/static/media/video-thumbnail.e39d4546ab24c71915fc.png" style={{ opacity: "1" }}></img>
+          <img ref={buttonRef} onClick={handleClick} alt="play button" class="playbtn" src="https://i.ibb.co/MsKtgjJ/download.png"></img>
         </div>
         <div style={{ backgroundColor: "rgb(51, 51, 51)", height: "10px" }}></div>
         <div className='intro'>
