@@ -661,4 +661,23 @@ main .start .video .playbtn {
   }
 }
 
+main .assessment {
+  background: #fff;
+  min-height: 490px;
+  width: 96%;
+}
+
+@media only screen and (max-width: 830px) {
+  main .container {
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  main .assessment {
+    margin-top: 15px;
+    min-height: 440px;
+  }
+}
+
 /*# sourceMappingURL=App.css.map */
