@@ -3,6 +3,7 @@ import forwardIcon from "../images/forward.svg";
 import backIcon from "../images/back.svg";
 import "./Question.css";
 import { useNavigate } from "react-router-dom";
+import CircularColor from "./CircularColor";
 
 let customQuestions = [
     { Statement: "Our church's ministry strategy is firm but flexible to accommodate unexpected game changers such as AI.", num: 1 },
@@ -18,6 +19,12 @@ let customQuestions = [
 ];
 
 function Question() {
+    const [scroll, setScroll] = useState(true)
+    useEffect(() => {
+        setTimeout(() => {
+            setScroll(false)
+        }, 2000)
+    }, [])
     const [isSmallScreen, setSmallScreen] = useState(window.matchMedia("(max-width: 768px)").matches);
     const navigate = useNavigate();
 
@@ -118,6 +125,7 @@ function Question() {
         }
     }
 
+
     function checkMatchingRecord(num) {
         return responseRecords.filter((element) => num === element.ques);
     }
@@ -148,73 +156,84 @@ function Question() {
     return (
         <section className="CustomQuestionnaire">
             <div className="QuestionnaireContainer">
-                {isSmallScreen && (
-                    <div className="ProgressBars2">
-                        <p className="progress-percent-text" variant="determinate" style={{ marginLeft: `${currentQuestionNum === 3 ? `calc(${(17 * currentQuestionNum) + 3}% - 2ch)` : `calc(${17 * currentQuestionNum}% - 2ch)`}`, marginBottom: "0px" }}>
-                            {progressBars[0].score - 14 * currentQuestionNum}%
-                        </p>
-                    </div>
-                )}
-                {!isSmallScreen && (
-                    <div className="ProgressBars2">
-                        <p className="progress-percent-text" variant="determinate" style={{ marginLeft: `${currentQuestionNum === 1 ? `calc(${progressBars[0].score - 14 * currentQuestionNum - 2}% - 2ch)` : `calc(${progressBars[0].score - 14 * currentQuestionNum - 4}% - 2ch)`}`, marginBottom: "0px" }}>
-                            {progressBars[0].score - 14 * currentQuestionNum}%
-                        </p>
-                    </div>
-                )}
-                <div className="ProgressBars">
-                    {progressBars.map((element) => (
-                        <div style={{ display: `${isSmallScreen && element.name !== "STRATEGY" ? "none" : "flex"}` }} key={element.key} className="ProgressBarWrapper">
-                            <progress id={element.name} max="100" value={element.score}></progress>
-                            <label style={{ color: `${element.name === "STRATEGY" ? "rgb(110, 12, 249)" : "black"}`, marginTop: "12px" }} htmlFor={element.name}>
-                                {element.name}
-                            </label>
-                        </div>
-                    ))}
-                </div>
-                <div className="QuestionNumber">
-                    <p>{currentQuestionNum} / 3</p>
-                </div>
-                <p className="QuestionStatement">{currentQuestionStatement[0].Statement}</p>
-                <div className="SliderWrapper">
-                    <input
-                        id="Slider"
-                        step={25}
-                        value={sliderValue}
-                        type="range"
-                        list="sliderOptions"
-                        onChange={handleSliderChange}
-                    />
-                    <datalist id="sliderOptions">
-                        <option value="0" label="Strongly Disagree"></option>
-                        <option value="25" label="Disagree"></option>
-                        <option value="50" label="Neutral"></option>
-                        <option value="75" label="Agree"></option>
-                        <option value="100" label="Strongly Agree"></option>
-                    </datalist>
-                </div>
-                <div className="NavigationButtons">
-                    <div
-                        onClick={() => {
-                            handleQuestionNavigation("back");
-                        }}
-                        className="ButtonWrapper"
-                    >
-                        <img src={backIcon} alt="Back arrow" />
-                        <p>PREV</p>
-                    </div>
-                    {checkMatchingRecord(currentQuestionNum).length > 0 && currentQuestionNum !== 3 && (
-                        <div
-                            onClick={() => {
-                                handleQuestionNavigation("forward");
-                            }}
-                            className="ButtonWrapper"
-                        >
-                            <p style={{ borderBottom: "1px solid rgb(110, 12, 249)" }}>NEXT</p>
-                            <img src={forwardIcon} alt="Forward arrow" />
-                        </div>
-                    )}
-                </div>
+                {
+                    scroll ?
+                        <><CircularColor /></>
+                        :
+                        <>
+                            {isSmallScreen && (
+                                <div className="ProgressBars2">
+                                    <p className="progress-percent-text" variant="determinate" style={{ marginLeft: `${currentQuestionNum === 3 ? `calc(${(17 * currentQuestionNum) + 3}% - 2ch)` : `calc(${17 * currentQuestionNum}% - 2ch)`}`, marginBottom: "0px" }}>
+                                        {progressBars[0].score - 14 * currentQuestionNum}%
+                                    </p>
+                                </div>
+                            )}
+                            {!isSmallScreen && (
+                                <div className="ProgressBars2">
+                                    <p className="progress-percent-text" variant="determinate" style={{ marginLeft: `${currentQuestionNum === 1 ? `calc(${progressBars[0].score - 14 * currentQuestionNum - 2}% - 2ch)` : `calc(${progressBars[0].score - 14 * currentQuestionNum - 4}% - 2ch)`}`, marginBottom: "0px" }}>
+                                        {progressBars[0].score - 14 * currentQuestionNum}%
+                                    </p>
+                                </div>
+                            )}
+                            <div className="ProgressBars">
+                                {progressBars.map((element) => (
+                                    <div style={{ display: `${isSmallScreen && element.name !== "STRATEGY" ? "none" : "flex"}` }} key={element.key} className="ProgressBarWrapper">
+                                        <progress id={element.name} max="100" value={element.score}></progress>
+                                        <div className="moving-text" style={{ position: 'absolute', top: '-30px', left: '0', right: '0', textAlign: 'center' }}>
+                                            {progressBars[0].score - 14 * currentQuestionNum}%
+                                        </div>
+                                        <label style={{ color: `${element.name === "STRATEGY" ? "rgb(110, 12, 249)" : "black"}`, marginTop: "12px" }} htmlFor={element.name}>
+                                            {element.name}
+                                        </label>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="QuestionNumber">
+                                <p>{currentQuestionNum} / 3</p>
+                            </div>
+                            <p className="QuestionStatement">{currentQuestionStatement[0].Statement}</p>
+                            <div className="SliderWrapper">
+                                <input
+                                    id="Slider"
+                                    step={25}
+                                    value={sliderValue}
+                                    type="range"
+                                    list="sliderOptions"
+                                    onChange={handleSliderChange}
+                                />
+                                <datalist id="sliderOptions">
+                                    <option value="0" label="Strongly Disagree"></option>
+                                    <option value="25" label="Disagree"></option>
+                                    <option value="50" label="Neutral"></option>
+                                    <option value="75" label="Agree"></option>
+                                    <option value="100" label="Strongly Agree"></option>
+                                </datalist>
+                            </div>
+                            <div className="NavigationButtons">
+                                <div
+                                    onClick={() => {
+                                        handleQuestionNavigation("back");
+                                    }}
+                                    className="ButtonWrapper"
+                                >
+                                    <img src={backIcon} alt="Back arrow" />
+                                    <p>PREV</p>
+                                </div>
+                                {checkMatchingRecord(currentQuestionNum).length > 0 && currentQuestionNum !== 3 && (
+                                    <div
+                                        onClick={() => {
+                                            handleQuestionNavigation("forward");
+                                        }}
+                                        className="ButtonWrapper"
+                                    >
+                                        <p style={{ borderBottom: "1px solid rgb(110, 12, 249)" }}>NEXT</p>
+                                        <img src={forwardIcon} alt="Forward arrow" />
+                                    </div>
+                                )}
+                            </div>
+                        </>
+                }
+
             </div>
         </section>
     );
