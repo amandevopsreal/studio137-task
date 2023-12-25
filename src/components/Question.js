@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 let customQuestions = [
     { Statement: "Our church's ministry strategy is firm but flexible to accommodate unexpected game changers such as AI.", num: 1 },
     {
-        Statement: "Our leadership team knows of the potential risks and rewards of leveraging AI.",
+        Statement: "Our leadership team knows of the potential risks and rewardsof leveraging AI.",
         num: 2,
     },
     {
@@ -101,11 +101,18 @@ function Question() {
         }
 
         setSliderValue(event.target.value);
-        setTimeout(() => {
-            setSliderValue("0");
-        }, 250);
+        if (currentQuestionNum !== 3 && checkMatchingRecord(currentQuestionNum + 1).length === 0) {
+            setTimeout(() => {
+                setSliderValue("0");
+            }, 250);
+        }
+        if (checkMatchingRecord(currentQuestionNum + 1).length > 0) {
+            setSliderValue(checkMatchingRecord(currentQuestionNum + 1)[0].sliderValue)
+        }
+
 
         if (currentQuestionNum !== 3) {
+
             handleProgressBarUpdate("Increase");
             setCurrentQuestionNum((prev) => prev + 1);
         }
@@ -138,7 +145,6 @@ function Question() {
             );
         }
     }
-
     return (
         <section className="CustomQuestionnaire">
             <div className="QuestionnaireContainer">
