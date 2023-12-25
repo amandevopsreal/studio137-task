@@ -84,6 +84,7 @@ function Question() {
     }
 
     function handleSliderChange(event) {
+        console.log(event.target.value)
         if (responseRecords.length === 0) {
             setResponseRecords([
                 { ques: currentQuestionNum, sliderValue: event.target.value },
@@ -163,15 +164,15 @@ function Question() {
                         <>
                             {isSmallScreen && (
                                 <div className="ProgressBars2">
-                                    <p className="progress-percent-text" variant="determinate" style={{ marginLeft: `${currentQuestionNum === 3 ? `calc(${(17 * currentQuestionNum) + 3}% - 2ch)` : `calc(${17 * currentQuestionNum}% - 2ch)`}`, marginBottom: "0px" }}>
-                                        {progressBars[0].score - 14 * currentQuestionNum}%
+                                    <p className="progress-percent-text" variant="determinate" >
+                                        Progress: {progressBars[0].score - 14 * currentQuestionNum}%
                                     </p>
                                 </div>
                             )}
                             {!isSmallScreen && (
                                 <div className="ProgressBars2">
-                                    <p className="progress-percent-text" variant="determinate" style={{ marginLeft: `${currentQuestionNum === 1 ? `calc(${progressBars[0].score - 14 * currentQuestionNum - 2}% - 2ch)` : `calc(${progressBars[0].score - 14 * currentQuestionNum - 4}% - 2ch)`}`, marginBottom: "0px" }}>
-                                        {progressBars[0].score - 14 * currentQuestionNum}%
+                                    <p className="progress-percent-text" variant="determinate" >
+                                        Progress: {progressBars[0].score - 14 * currentQuestionNum}%
                                     </p>
                                 </div>
                             )}
